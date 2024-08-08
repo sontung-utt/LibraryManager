@@ -27,6 +27,7 @@ public class MenuDocument {
             System.out.println("3. Sửa thông tin tài liệu");
             System.out.println("4. Hiển thị thông tin");
             System.out.println("5. Tìm kiếm theo loại tài liệu");
+            System.out.println("6. Tìm kiếm tài liệu theo Id");
             System.out.println("0. Thoát chương trình");
             System.out.print("Nhập lựa chọn: ");
             choice = inputNumber.nextInt();
@@ -45,6 +46,9 @@ public class MenuDocument {
                     break;
                 case 5:
                     searchByType();
+                    break;
+                case 6:
+                    menuSearchById();
                     break;
                 case 0:
                     System.out.println("Thoát chương trình quản lý tài liệu!");
@@ -373,7 +377,17 @@ public class MenuDocument {
         } else {
             System.out.println("Không tìm thấy tài liệu!");
         }
+    }
 
+    public void menuSearchById(){
+        System.out.println("Tìm kiếm tài liệu theo Id");
+        System.out.print("Nhập mã tài liệu: ");
+        int id = inputNumber.nextInt();
+        if (documentManager.findIndexById(id)==-1){
+            System.out.println("Không có mã tài liệu " + id + "!");
+        } else {
+            System.out.println(documentManager.findDocumentById(id));
+        }
     }
 
 }
